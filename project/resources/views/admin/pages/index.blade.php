@@ -27,4 +27,9 @@
         </tbody>
     </table>
 
+    <div class="text-center">
+        {{ $pages->links() }}
+    </div>
+
+
 @endcomponent

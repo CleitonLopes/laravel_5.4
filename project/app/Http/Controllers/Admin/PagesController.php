@@ -15,7 +15,8 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
+        // Faz a paginação dos dados
+        $pages = Page::paginate(20);
 
         //dd($pages);
         return view('admin.pages.index', compact('pages')); // compact recurso do php
