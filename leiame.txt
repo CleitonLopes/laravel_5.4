@@ -1,0 +1,90 @@
+Laravel 5.4
+***********
+
+- composer create-project --prefer-dist laravel/laravel project "5.4.*"
+
+* php artisan list - retorna a lista de comandos do artisan
+
+* php artisan serve - roda o servidor interno
+
+************************************************************************************************************************
+
+* Routes
+
+Route::get('/hello/{name}', function ($name) {
+
+   return 'Hello ' . $name;
+
+});
+
+{nome?} informa que existe um valor padrão
+Route::get('/hello/{name?}', function ($name = 'ze') {
+
+    return 'Hello ' . $name;
+
+});
+
+************************************************************************************************************************
+
+Controllers
+***********
+
+- Criando um controller artisna
+
+- php artisan make:controller HelloController
+
+// segundo parametro o controller @ index o metodo
+Route::get('hello/{name?}', 'HelloController@index');
+
+************************************************************************************************************************
+
+Blade e nossa primeira aplicação
+********************************
+
+- Blade template engine
+- Criando um template e renderizado dados vindo de uma rota passando pelo controller
+
+
+************************************************************************************************************************
+
+Banco e  controller para o CRUD
+********************************
+
+* Criando um arquivo de model com suas migrations, todo arquivo de model tem que ser no singular
+
+- php artisan make:model Page --migration
+
+- Configurar o arquivo .env
+
+  Cria o Controller dentro da folder Admin e já cria os metodos no controller
+- php artisan make:controller Admin\\PagesController --resource
+
+************************************************************************************************************************
+
+Gerando banco e semeando dados
+******************************
+
+- Faker, usando biblioteca faker, ele cria resultados falsos, ver documentação php faker
+
+- Seeder
+
+- Criando seeder
+
+- php artisan make:seed PagesTableSeeder
+- Configurar a seed criada chamando a factory
+- em DatabaseSeeder descomentar o metodo run() e chamar a seed $this->call(PagesTableSeeder::class);
+
+- Gera as tabelas no banco
+- No terminal rode php artisan migrate
+
+- Roda as seeds
+- php artisan db:seed
+
+
+
+
+
+
+
+
+
