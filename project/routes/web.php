@@ -24,8 +24,27 @@ Route::get('/', function () {
 
 // Controllers
 
-Route::get('hello/{name?}', 'HelloController@index');
+Route::get('hello/{name?}', 'HelloController@index')->name('hello.index');
 
 Route::post('hello/{name?}', 'HelloController@render');
 
-Route::resource('pages', 'Admin\PagesController');
+// Formato usado até o laravel 5.3
+/*Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function () {
+
+    Route::resource('pages', 'Admin\PagesController');
+
+});*/
+
+// Novo formato
+// Caso há outras rotas protegidas, adicionar no group
+Route::prefix('admin')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::resource('pages', 'Admin\PagesController');
+    });
+
+
+// Criado pelo comanto php artisan make:auth
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

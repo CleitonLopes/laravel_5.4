@@ -1,6 +1,6 @@
 @component('admin.layouts.default')
 
-    <h3> {{ $title }} </h3> <smal> {{ $description }} </smal>
+    <h3> {{ $title }}  <small> {{ $description }} </small> </h3>
 
     {{--div.panel.panel-default>div.panel-body--}}
     <div class="panel panel-default">

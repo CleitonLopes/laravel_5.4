@@ -29,7 +29,7 @@ class PagesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -40,7 +40,9 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Page::create($request->all());
+
+        return response()->redirectToRoute('pages.index');
     }
 
     /**
@@ -51,7 +53,9 @@ class PagesController extends Controller
      */
     public function show($id)
     {
-        //
+        $page = Page::findOrFail($id);
+
+        return view('admin.pages.show', compact('page'));
     }
 
     /**
@@ -62,7 +66,9 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page = Page::findOrFail($id);
+
+        return view('admin.pages.edit', compact('page'));
     }
 
     /**
@@ -74,7 +80,11 @@ class PagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $page = Page::findOrFail($id);
+
+        $page->update($request->all());
+
+        return response()->redirectToRoute('pages.show', $id);
     }
 
     /**
@@ -85,6 +95,10 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $page = Page::findOrFail($id);
+
+        $page->delete();
+
+        return response()->redirectToRoute('pages.index');
     }
 }

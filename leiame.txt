@@ -7,6 +7,11 @@ Laravel 5.4
 
 * php artisan serve - roda o servidor interno
 
+* Caso precise resetar as configuracoes do laravel, apaga o cache de navegacao
+- php artisan config:clear
+- php artisan cache:clear
+- php artisan config:cache
+
 ************************************************************************************************************************
 
 * Routes
@@ -80,6 +85,52 @@ Gerando banco e semeando dados
 - Roda as seeds
 - php artisan db:seed
 
+************************************************************************************************************************
+
+Listando dados do banco
+***********************
+
+- Criando uma view index.blade.php e chamando ela no controller PagesController
+
+- listando no arquivo os dados do banco
+
+************************************************************************************************************************
+
+Layouts no Blade com Components
+*******************************
+
+- Criado um component Default dentro de admin e injetado os outros components dentro
+
+************************************************************************************************************************
+
+Paginação
+**********
+
+- Para personalizar alguma recurso já feito pelo laravel como a paginacao
+
+- php artisan vendor:publish --tag=laravel-pagination, aqui ele cria a pasta vendor no resources com os tipos de
+paginação que ele usou
+
+************************************************************************************************************************
+
+Criando views do CRUD
+*********************
+
+- Criados arquivos views dentro de pages, create, edit, form, show.
+
+- Para poder salvar arquivos em massa, no model Page usar uma propriedade protegida informando os campos que vão
+ser inseridos protected $fillable = ['a', 'b', 'c'];
+
+************************************************************************************************************************
+
+Autenticação com laravel
+************************
+
+- php artisan make:auth
+
+- Ele cria rotas e controllers, pasta auth nos resources para acesso a autenticação
+
+- Crie um usuario e senha cleitoncotrin@gmail.com 123456
 
 
 
